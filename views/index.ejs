@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 class="text-center">Welcome, <%= user ? user.username : "Guest" %>!</h1>
+
+    <% if (user) { %>
+        <div class="row">
+            <!-- Image Upload and List -->
+            <div class="col-md-6">
+                <h2>Upload Image</h2>
+                <form action="/upload" method="POST" enctype="multipart/form-data" class="mb-3">
+                    <div class="input-group">
+                        <input type="file" class="form-control" name="image" required>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+
+                <h2>Uploaded Images</h2>
+                <% if (photos.length > 0) { %>
+                    <div class="row">
+                        <% photos.forEach(photo => { %>
+                            <div class="col-md-6">
+                                <div class="card my-2">
+                                    <img src="<%= photo %>" class="card-img-top" alt="Uploaded Image">
+                                    <div class="card-body text-center">
+                                        <form action="/delete-image" method="POST">
+                                            <input type="hidden" name="image_path" value="<%= photo %>">
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <p>No images uploaded yet.</p>
+                <% } %>
+            </div>
+
+            <div class="col-md-6">
+                <h2>Users List</h2>
+                <ul class="list-group">
+                    <% users.forEach(user => { %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <%= user.username %>
+                            <form action="/users/delete/<%= user._id %>" method="POST">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+            <form action="/logout" method="POST">
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+    <% } else { %>
+        <p class="text-center">Please <a href="/login">log in</a> to upload images and see the users list.</p>
+    <% } %>
+
+
+</div>
+
+<!-- Bootstrap JS -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+</body>
+</html>

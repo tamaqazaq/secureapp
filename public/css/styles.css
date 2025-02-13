@@ -1,0 +1,79 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: #181818;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2 {
+    color: #1DB954;
+}
+
+.btn-primary {
+    background-color: #1DB954;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #17a74a;
+}
+
+.btn-danger {
+    background-color: #e22134;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c81d2d;
+}
+
+.input-group .form-control {
+    background-color: #282828;
+    border: none;
+    color: white;
+}
+
+.input-group .form-control:focus {
+    background-color: #333;
+    border: 1px solid #1DB954;
+    box-shadow: none;
+}
+
+.card {
+    background-color: #282828;
+    color: white;
+    border: none;
+}
+
+.card img {
+    border-radius: 5px;
+}
+
+.list-group-item {
+    background-color: #282828;
+    color: white;
+    border: 1px solid #333;
+}
+
+.list-group-item .btn-danger {
+    background-color: #e22134;
+}
+
+.list-group-item .btn-danger:hover {
+    background-color: #c81d2d;
+}
+
+a {
+    color: #1DB954;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
